@@ -1,6 +1,4 @@
-package com.dira.multidb.datasource.config;
-
-import java.util.HashMap;
+package com.dira.multidb.config;
 
 import javax.sql.DataSource;
 
@@ -13,51 +11,39 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.dira.multidb.database1.Client;
+import com.dira.multidb.database2.Server;
 import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "com.dira.multidb.database1", entityManagerFactoryRef = "database1EntityManagerFactory", transactionManagerRef = "database1TransactionManager")
-public class Database1DatasourceConfig {
-    @Bean
-    @ConfigurationProperties("spring.datasource.database1")
-    public DataSourceProperties database1DataSourceProperties() {
-        return new DataSourceProperties();
-    }
+@EnableJpaRepositories(basePackages = "com.dira.multidb.database2", entityManagerFactoryRef = "database2EntityManagerFactory", transactionManagerRef = "database2TransactionManager")
+public class Database2DatasourceConfig {
 
-    @Bean
-    @ConfigurationProperties("spring.datasource.database1.configuration")
-    public DataSource database1DataSource() {
-        return database1DataSourceProperties().initializeDataSourceBuilder()
-                .type(HikariDataSource.class).build();
-    }
+	@Bean
+	@ConfigurationProperties("spring.datasource.database2")
+	public DataSourceProperties database2DataSourceProperties() {
+		return new DataSourceProperties();
+	}
 
-    @Bean
-    public EntityManagerFactoryBuilder entityManagerFactoryBuilder() {
-        HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        vendorAdapter.setGenerateDdl(false);
-        return new EntityManagerFactoryBuilder(vendorAdapter, new HashMap<>(), null);
-    }
+	@Bean
+	@ConfigurationProperties("spring.datasource.database2.configuration")
+	public DataSource database2DataSource() {
+		return database2DataSourceProperties().initializeDataSourceBuilder().type(HikariDataSource.class).build();
+	}
 
-    @Bean(name = "database1EntityManagerFactory")
-    public LocalContainerEntityManagerFactoryBean database1EntityManagerFactory(
-            EntityManagerFactoryBuilder builder) {
-        return builder
-                .dataSource(database1DataSource())
-                .packages(Client.class)
-                .build();
-    }
+	@Bean(name = "database2EntityManagerFactory")
+	public LocalContainerEntityManagerFactoryBean database2EntityManagerfactory(EntityManagerFactoryBuilder builder) {
+		return builder.dataSource(database2DataSource()).packages(Server.class).build();
+	}
 
-    @Bean(name = "database1TransactionManager")
-    public PlatformTransactionManager database1TransactionManager(
-            final @Qualifier("database1EntityManagerFactory") LocalContainerEntityManagerFactoryBean database1EntityManagerFactory) {
-        return new JpaTransactionManager(database1EntityManagerFactory.getObject());
-    }
+	@Bean(name = "database2TransactionManager")
+	public PlatformTransactionManager database2TransactionManager(
+			final @Qualifier("database2EntityManagerFactory") LocalContainerEntityManagerFactoryBean database2EntityManagerFactory) {
+		return new JpaTransactionManager(database2EntityManagerFactory.getObject());
+	}
 
 }
 
