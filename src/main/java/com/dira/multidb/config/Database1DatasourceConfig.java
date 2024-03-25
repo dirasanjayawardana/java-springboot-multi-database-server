@@ -10,6 +10,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -17,7 +18,6 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.dira.multidb.database1.Client;
 import com.dira.multidb.database1.entity.Address;
 import com.dira.multidb.database1.entity.Contact;
 import com.dira.multidb.database1.entity.User;
@@ -52,10 +52,11 @@ public class Database1DatasourceConfig {
             EntityManagerFactoryBuilder builder) {
         return builder
                 .dataSource(database1DataSource())
-                .packages(Client.class, User.class, Address.class, Contact.class)
+                .packages(User.class)
                 .build();
     }
 
+    // @Primary
     @Bean(name = "database1TransactionManager")
     public PlatformTransactionManager database1TransactionManager(
         final @Qualifier("database1EntityManagerFactory") LocalContainerEntityManagerFactoryBean database1EntityManagerFactory) {
