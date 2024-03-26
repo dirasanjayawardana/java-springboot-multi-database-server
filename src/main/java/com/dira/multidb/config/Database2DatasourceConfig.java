@@ -15,7 +15,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.dira.multidb.database2.Server;
+import com.dira.multidb.database2.entity.Book;
 import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
@@ -35,12 +35,16 @@ public class Database2DatasourceConfig {
 		return database2DataSourceProperties().initializeDataSourceBuilder().type(HikariDataSource.class).build();
 	}
 
+	// @Primary
 	@Bean(name = "database2EntityManagerFactory")
 	public LocalContainerEntityManagerFactoryBean database2EntityManagerfactory(EntityManagerFactoryBuilder builder) {
-		return builder.dataSource(database2DataSource()).packages(Server.class).build();
+		return builder
+				.dataSource(database2DataSource())
+				.packages(Book.class)
+				.build();
 	}
 
-	@Primary
+	// @Primary
 	@Bean(name = "database2TransactionManager")
 	public PlatformTransactionManager database2TransactionManager(
 			final @Qualifier("database2EntityManagerFactory") LocalContainerEntityManagerFactoryBean database2EntityManagerFactory) {

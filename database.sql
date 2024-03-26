@@ -76,3 +76,13 @@ CREATE TABLE addresses
     FOREIGN KEY fk_contacts_addresses (contact_id) REFERENCES contacts (id)
 ) ENGINE InnoDB;
 
+-- ----------------------- MySql Book store ---------------------------------
+CREATE TABLE book (
+    id VARCHAR(255) NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    description TEXT,
+    is_deleted TINYINT(1) DEFAULT 0,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (id)
+);

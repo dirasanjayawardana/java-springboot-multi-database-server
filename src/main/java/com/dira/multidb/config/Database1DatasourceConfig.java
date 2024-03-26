@@ -47,16 +47,17 @@ public class Database1DatasourceConfig {
         return new EntityManagerFactoryBuilder(vendorAdapter, new HashMap<>(), null);
     }
 
+    @Primary
     @Bean(name = "database1EntityManagerFactory")
     public LocalContainerEntityManagerFactoryBean database1EntityManagerFactory(
             EntityManagerFactoryBuilder builder) {
         return builder
                 .dataSource(database1DataSource())
-                .packages(User.class)
+                .packages(User.class, Address.class, Contact.class)
                 .build();
     }
 
-    // @Primary
+    @Primary
     @Bean(name = "database1TransactionManager")
     public PlatformTransactionManager database1TransactionManager(
         final @Qualifier("database1EntityManagerFactory") LocalContainerEntityManagerFactoryBean database1EntityManagerFactory) {
