@@ -16,6 +16,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+// macam-macam request
+// @RequestHeader("Authorization") String token
+// @RequestBody UpdateUserRequest request
+// @PathVariable("id") Long id
+// @RequestParam("page") Integer page
 
 @RestController // menandakan bahwa ini adalah controller
 public class UserController {
@@ -38,7 +43,7 @@ public class UserController {
     }
 
 
-    // mengambil data user saat ini, akan menjalankan UserArgumentResolver untuk mengecek apakah user sudah login dan membawa token
+    // mengambil data user saat ini, akan menjalankan UserArgumentResolver untuk mengecek apakah user sudah login dan membawa token, jika ingin cek manual bisa dengan @RequestHeader("Authorization")
     @GetMapping(
         path = "/api/users/current",
         produces = MediaType.APPLICATION_JSON_VALUE
