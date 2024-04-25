@@ -25,9 +25,9 @@ import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "com.dira.multidb.database1", entityManagerFactoryRef = "database1EntityManagerFactory", transactionManagerRef = "database1TransactionManager")
+@EnableJpaRepositories(basePackages = "com.dira.multidb.database1", entityManagerFactoryRef = "database1EntityManagerFactory", transactionManagerRef = "database1TransactionManager") // berfungsi untuk mengaktifkan repositori JPA
 public class Database1DatasourceConfig {
-    @Bean
+    @Bean 
     @ConfigurationProperties("spring.datasource.database1")
     public DataSourceProperties database1DataSourceProperties() {
         return new DataSourceProperties();
@@ -69,6 +69,9 @@ public class Database1DatasourceConfig {
 // @Configuration:
 // Fungsi: Menandakan bahwa kelas tersebut adalah kelas konfigurasi Spring.
 // Penjelasan: Anotasi ini digunakan untuk menandai bahwa kelas Database2DatasourceConfig adalah kelas konfigurasi Spring yang akan digunakan untuk mengkonfigurasi komponen-komponen aplikasi.
+
+// @ConfigurationProperties
+// berfungsi untuk mengambil properti database1 dari application.properties
 
 // @EnableTransactionManagement:
 // Fungsi: Mengaktifkan manajemen transaksi(query database) Spring di kelas tersebut.

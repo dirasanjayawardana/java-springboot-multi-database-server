@@ -57,6 +57,9 @@ public class Database2DatasourceConfig {
 // Fungsi: Menandakan bahwa kelas tersebut adalah kelas konfigurasi Spring.
 // Penjelasan: Anotasi ini digunakan untuk menandai bahwa kelas Database2DatasourceConfig adalah kelas konfigurasi Spring yang akan digunakan untuk mengkonfigurasi komponen-komponen aplikasi.
 
+// @ConfigurationProperties
+// berfungsi untuk mengambil properti database1 dari application.properties
+
 // @EnableTransactionManagement:
 // Fungsi: Mengaktifkan manajemen transaksi(query database) Spring di kelas tersebut.
 // Penjelasan: Anotasi ini digunakan untuk mengaktifkan manajemen transaksi Spring di kelas Database2DatasourceConfig, yang memungkinkan penggunaan fitur-fitur transaksi Spring di dalamnya.
