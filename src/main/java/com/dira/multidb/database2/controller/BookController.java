@@ -42,7 +42,9 @@ public class BookController {
             }
             return ResponseEntity.status(200).body(response);
         } catch (Exception e) {
-            throw e;
+            // bisa throw exception jika telah melakukan custom exception, atau bisa langsung beri response
+            // throw e;
+            return ResponseEntity.status(400).body(e.getMessage());
         }
     }
 
@@ -52,7 +54,9 @@ public class BookController {
             Response response = bookService.postBook(request);
             return ResponseEntity.status(HttpStatus.CREATED.value()).body(response);
         } catch (Exception e) {
-            throw e;
+            // bisa throw exception jika telah melakukan custom exception, atau bisa langsung beri response
+            // throw e;
+            return ResponseEntity.status(400).body(e.getMessage());
         }
     }
 
@@ -62,7 +66,9 @@ public class BookController {
             ResponseData<Book> responseData = this.bookService.updateBook(id, request);
             return ResponseEntity.ok().body(responseData);
         } catch (Exception e) {
-            throw e;
+            // bisa throw exception jika telah melakukan custom exception, atau bisa langsung beri response
+            // throw e;
+            return ResponseEntity.status(400).body(e.getMessage());
         }
     }
 
@@ -72,7 +78,9 @@ public class BookController {
             Response response = this.bookService.deleteBook(id);
             return ResponseEntity.ok().body(response);
         } catch (Exception e) {
-            throw e;
+            // bisa throw exception jika telah melakukan custom exception, atau bisa langsung beri response
+            // throw e;
+            return ResponseEntity.status(400).body(e.getMessage());
         }
     }
 
