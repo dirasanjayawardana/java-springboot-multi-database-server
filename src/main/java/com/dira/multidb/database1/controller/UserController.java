@@ -28,6 +28,12 @@ public class UserController {
     @Autowired // untuk inject object agar tidak null (instansiasi object)
     private UserService userService;
 
+    // alternatif jika tidak menggunakan @AutoWired
+    // private UserService userService;
+    // public UserController(UserService userService) {
+    //     this.userService = userService;
+    // }
+
     // membuat controller register dengan return payload WebResponse dengan data string, menggunakan RequestBody dengan struktur data dari payload RegisterUserRequest
     // menggunakan method POST, dengan tipe data yang dapat diterima dan dikembalikan berupa JSON (atribute consume dan produce tidak wajib)
     @PostMapping(
