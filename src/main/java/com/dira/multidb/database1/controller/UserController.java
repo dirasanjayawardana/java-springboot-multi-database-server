@@ -28,7 +28,7 @@ public class UserController {
     @Autowired // untuk inject object agar tidak null (instansiasi object)
     private UserService userService;
 
-    // alternatif jika tidak menggunakan @AutoWired
+    // alternatif jika tidak menggunakan @AutoWired, harus inject contstructor manual
     // private UserService userService;
     // public UserController(UserService userService) {
     //     this.userService = userService;
