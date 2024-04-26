@@ -43,8 +43,8 @@ public class BookController {
             return ResponseEntity.status(200).body(response);
         } catch (Exception e) {
             // bisa throw exception jika telah melakukan custom exception, atau bisa langsung beri response
-            // throw e;
-            return ResponseEntity.status(400).body(e.getMessage());
+            // return ResponseEntity.status(400).body(e.getMessage());
+            throw e;
         }
     }
 
@@ -55,8 +55,8 @@ public class BookController {
             return ResponseEntity.status(HttpStatus.CREATED.value()).body(response);
         } catch (Exception e) {
             // bisa throw exception jika telah melakukan custom exception, atau bisa langsung beri response
-            // throw e;
-            return ResponseEntity.status(400).body(e.getMessage());
+            // return ResponseEntity.status(400).body(e.getMessage());
+            throw e;
         }
     }
 
@@ -67,8 +67,8 @@ public class BookController {
             return ResponseEntity.ok().body(responseData);
         } catch (Exception e) {
             // bisa throw exception jika telah melakukan custom exception, atau bisa langsung beri response
-            // throw e;
-            return ResponseEntity.status(400).body(e.getMessage());
+            // return ResponseEntity.status(400).body(e.getMessage());
+            throw e;
         }
     }
 
@@ -79,8 +79,8 @@ public class BookController {
             return ResponseEntity.ok().body(response);
         } catch (Exception e) {
             // bisa throw exception jika telah melakukan custom exception, atau bisa langsung beri response
-            // throw e;
-            return ResponseEntity.status(400).body(e.getMessage());
+            // return ResponseEntity.status(400).body(e.getMessage());
+            throw e;
         }
     }
 
