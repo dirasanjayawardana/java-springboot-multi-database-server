@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @RestController // menandakan bahwa ini adalah controller
 public class UserController {
 
-    @Autowired // untuk inject object agar tidak null (instansiasi object)
+    @Autowired // Depedency injection
     private UserService userService;
 
     // alternatif jika tidak menggunakan @AutoWired, harus inject contstructor manual

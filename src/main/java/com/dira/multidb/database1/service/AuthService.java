@@ -23,7 +23,7 @@ import jakarta.transaction.Transactional;
 @Service
 public class AuthService {
 
-    @Autowired // untuk inject object agar tidak null (sama seperti instansiasi object, private UserRepository userRepository = new UserRepository())
+    @Autowired // Dependecy injection
     private UserRepository userRepository;
 
     @Autowired
