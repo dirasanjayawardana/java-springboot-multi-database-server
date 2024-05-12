@@ -9,11 +9,12 @@ import org.springframework.context.ConfigurableApplicationContext;
 @SpringBootApplication
 public class MultidbApplication {
 
-	// run standard spring boot
+	// // run standard spring boot
 	// public static void main(String[] args) {
 	// 	SpringApplication.run(MultidbApplication.class, args);
 	// }
 
+	
 	// run with custom aplication context
 	public static void main(String[] args) {
 		SpringApplication application = new SpringApplication(MultidbApplication.class);
